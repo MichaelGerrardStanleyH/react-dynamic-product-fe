@@ -1,10 +1,13 @@
 import { React, useState, useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
-import Detail from "./pages/Detail";
-import Add from "./pages/Add";
-import Edit from "./pages/Edit";
+import Detail from "./pages/DetailProduct";
+import Add from "./pages/AddDynamicProduct";
+import Edit from "./pages/EditDynamicProduct";
 import AddProduct from "./pages/AddProduct";
+import AddDynamicProduct from "./pages/AddDynamicProduct";
+import EditDynamicProduct from "./pages/EditDynamicProduct";
+import DetailProduct from "./pages/DetailProduct";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,16 +20,16 @@ function App() {
       element: <AddProduct />,
     },
     {
-      path: "/detail",
-      element: <Detail />,
+      path: "/detail-product",
+      element: <DetailProduct />,
     },
     {
-      path: "/add",
-      element: <Add />,
+      path: "/add-dynamic-product",
+      element: <AddDynamicProduct />,
     },
     {
-      path: "/edit",
-      element: <Edit />,
+      path: "/edit-dynamic-product",
+      element: <EditDynamicProduct />,
     },
   ]);
 

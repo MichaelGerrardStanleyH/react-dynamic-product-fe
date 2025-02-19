@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import apiProducts from "../api/apiProducts";
 
-export default function Add() {
+export default function AddDynamicProduct() {
   let navigate = useNavigate();
 
   let { state } = useLocation();
@@ -35,7 +35,6 @@ export default function Add() {
     const payload = dto;
 
     console.log(payload);
-    
 
     apiProducts
       .addDynamicProperty(payload)
@@ -49,28 +48,33 @@ export default function Add() {
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicPropertyName">
-          <Form.Label>Property Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Property Name"
-            onChange={handlePropertyName}
-          />
-        </Form.Group>
+      <div className="container form">
+        <h1 className="mb-3" style={{ color: "#E7A572" }}>
+          Add {state.product_name} Dynamic Property
+        </h1>
+        <Form onSubmit={onSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicPropertyName">
+            <Form.Label>Property Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Property Name"
+              onChange={handlePropertyName}
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPropertyValue">
-          <Form.Label>Property Value</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Property Value"
-            onChange={handlePropertyValue}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <Form.Group className="mb-3" controlId="formBasicPropertyValue">
+            <Form.Label>Property Value</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Property Value"
+              onChange={handlePropertyValue}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
     </>
   );
 }

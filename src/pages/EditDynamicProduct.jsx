@@ -4,16 +4,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import apiProducts from "../api/apiProducts";
 
-export default function Edit() {
+export default function EditDynamicProduct() {
   let navigate = useNavigate();
 
   let { state } = useLocation();
-  
 
   const [dynamicProperty, setDynamicProperty] = useState({});
 
   const [dto, setDto] = useState({
-    property_name: "",  
+    property_name: "",
     property_value: "",
     static_product_id: state.staticProductId,
   });
@@ -25,7 +24,6 @@ export default function Edit() {
     });
 
     console.log(dto);
-    
   };
 
   const handlePropertyValue = (event) => {
@@ -64,30 +62,35 @@ export default function Edit() {
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicPropertyName">
-          <Form.Label>Property Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Property Name"
-            onChange={handlePropertyName}
-            defaultValue={dynamicProperty["property_name"]}
-          />
-        </Form.Group>
+      <div className="container form">
+        <h1 className="mb-3" style={{ color: "#E7A572" }}>
+          Update Dynamic Property
+        </h1>
+        <Form onSubmit={onSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicPropertyName">
+            <Form.Label>Property Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Property Name"
+              onChange={handlePropertyName}
+              defaultValue={dynamicProperty["property_name"]}
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPropertyValue">
-          <Form.Label>Property Value</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter Property Value"
-            onChange={handlePropertyValue}
-            defaultValue={dynamicProperty["property_value"]}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <Form.Group className="mb-3" controlId="formBasicPropertyValue">
+            <Form.Label>Property Value</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter Property Value"
+              onChange={handlePropertyValue}
+              defaultValue={dynamicProperty["property_value"]}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
     </>
   );
 }

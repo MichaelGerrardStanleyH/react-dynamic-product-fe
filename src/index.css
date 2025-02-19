@@ -1,5 +1,28 @@
-.card{
+.card {
   background-color: red;
 }
 
-.btn-card { display: flex; }
+.btn-card {
+  display: flex;
+}
+
+body {
+  background-color: #f7e6d3;
+}
+
+.card {
+  background-color: #23325a;
+}
+
+.form{
+  width: 50%;
+  padding: 30px;
+  border-radius: 2%;
+  background-color: #23325a;
+  margin-top: 50px;
+}
+
+.table{
+  margin-top: 30px;
+
+}
