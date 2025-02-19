@@ -7,6 +7,7 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Badge from "react-bootstrap/Badge";
 
 export default function Home() {
   let navigate = useNavigate();
@@ -29,15 +30,37 @@ export default function Home() {
     navigate("add", { state: { productId: id } });
   };
 
+  const onClickAddProduct = () => {
+    navigate("add-product");
+  };
+
   return (
     <>
       <Container fluid="md" className="mt-5">
         <Row>
           <Col></Col>
           <Col>
+            <h1 className="">
+              <Badge bg="secondary">Welcome to Dynamic Product System</Badge>
+            </h1>
+          </Col>
+          <Col></Col>
+        </Row>
+        <Row>
+          <Col></Col>
+          <Col>
+            <Button variant="success" className="mx-1 my-1" onClick={onClickAddProduct}>
+              Add New Product
+            </Button>
+          </Col>
+          <Col></Col>
+        </Row>
+        <Row>
+          <Col></Col>
+          <Col>
             {products.map((obj) => {
               return (
-                <Card style={{ width: "20rem" }}>
+                <Card style={{ width: "20rem" }} className="my-4">
                   <Card.Body>
                     <Card.Title>Product Name : </Card.Title>
                     <Card.Text>{obj["property_value"]}</Card.Text>

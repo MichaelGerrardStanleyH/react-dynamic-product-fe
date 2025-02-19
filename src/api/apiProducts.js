@@ -24,16 +24,36 @@ const getById = async (id) => {
   }
 };
 
+const addProduct = async (payload) => {
+  try {
+    const result = await axios.post(`${config.host}/products`, payload);
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+    return await error.message;
+  }
+};
+
+const deleteProduct = async (id) => {
+  try {
+    const result = await axios.delete(`${config.host}/products/${id}`);
+  } catch (error) {
+    console.log(error);
+    return await error.message;
+  }
+};
+
 const getDynamicProductById = async (id) => {
-    try {
-      const result = await axios.get(`${config.host}/dynamic-products/${id}`);
-      console.log(result.data);
-      return result.data;
-    } catch (error) {
-      console.log(error);
-      return await error.message;
-    }
-  };
+  try {
+    const result = await axios.get(`${config.host}/dynamic-products/${id}`);
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+    return await error.message;
+  }
+};
 
 const addDynamicProperty = async (payload) => {
   try {
@@ -49,19 +69,21 @@ const addDynamicProperty = async (payload) => {
 const updateDynamicProperty = async (id, payload) => {
   console.log(id);
   console.log(payload);
-  
-    try {
-      const result = await axios.put(`${config.host}/dynamic-products/${id}`, payload);
-      console.log(result.data);
-      return result.data;
-    } catch (error) {
-      console.log(error);
-      return await error.message;
-    }
-  };
+
+  try {
+    const result = await axios.put(
+      `${config.host}/dynamic-products/${id}`,
+      payload
+    );
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+    return await error.message;
+  }
+};
 
 const deleteDynamicProperty = async (id) => {
-
   try {
     const result = await axios.delete(`${config.host}/dynamic-products/${id}`);
   } catch (error) {
@@ -73,8 +95,10 @@ const deleteDynamicProperty = async (id) => {
 export default {
   list,
   getById,
+  addProduct,
+  deleteProduct,
   addDynamicProperty,
   deleteDynamicProperty,
   getDynamicProductById,
-  updateDynamicProperty
+  updateDynamicProperty,
 };

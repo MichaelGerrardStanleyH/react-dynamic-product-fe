@@ -4,12 +4,17 @@ import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Add from "./pages/Add";
 import Edit from "./pages/Edit";
+import AddProduct from "./pages/AddProduct";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Home />,
+    },
+    {
+      path: "/add-product",
+      element: <AddProduct />,
     },
     {
       path: "/detail",

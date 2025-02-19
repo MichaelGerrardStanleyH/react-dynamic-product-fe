@@ -4,56 +4,34 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import apiProducts from "../api/apiProducts";
 
-export default function Edit() {
+export default function AddProduct() {
   let navigate = useNavigate();
 
   let { state } = useLocation();
-  
-
-  const [dynamicProperty, setDynamicProperty] = useState({});
 
   const [dto, setDto] = useState({
-    property_name: "",  
+    property_name: "name",
     property_value: "",
-    static_product_id: state.staticProductId,
   });
 
-  const handlePropertyName = (event) => {
-    setDto({
-      ...dto,
-      ["property_name"]: event.target.value,
-    });
-
-    console.log(dto);
-    
-  };
 
   const handlePropertyValue = (event) => {
     setDto({
       ...dto,
       ["property_value"]: event.target.value,
     });
-    console.log(dto);
   };
-
-  useEffect(() => {
-    apiProducts.getDynamicProductById(state.productId).then((data) => {
-      setDynamicProperty(data);
-      setDto["property_name"] = data["property_name"];
-      setDto["property_value"] = data["property_value"];
-      setDto["static_product_id"] = data["static_product_id"];
-    });
-  }, []);
 
   const onSubmit = (event) => {
     event.preventDefault();
 
-    console.log(state.productId);
-
     const payload = dto;
 
+    console.log(payload);
+    
+
     apiProducts
-      .updateDynamicProperty(state.productId, payload)
+      .addProduct(payload)
       .then((data) => {
         console.log(data);
       })
@@ -70,8 +48,8 @@ export default function Edit() {
           <Form.Control
             type="text"
             placeholder="Enter Property Name"
-            onChange={handlePropertyName}
-            defaultValue={dynamicProperty["property_name"]}
+            value={"name"}
+            disabled
           />
         </Form.Group>
 
@@ -81,7 +59,6 @@ export default function Edit() {
             type="text"
             placeholder="Enter Property Value"
             onChange={handlePropertyValue}
-            defaultValue={dynamicProperty["property_value"]}
           />
         </Form.Group>
         <Button variant="primary" type="submit">
