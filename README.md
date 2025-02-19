@@ -1,4 +1,4 @@
-## react-dynamic-product-fe
+## React - Dynamic Product FE
 
 ### Feature Integrate
 - Get all product
